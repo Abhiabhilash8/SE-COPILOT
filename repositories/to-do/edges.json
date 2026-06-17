@@ -1,0 +1,392 @@
+[
+  {
+    "from": "project:root",
+    "relation": "HAS_MODULE",
+    "to": "folder:config",
+    "reason": "The system configurations are modularized inside the config folder."
+  },
+  {
+    "from": "project:root",
+    "relation": "HAS_MODULE",
+    "to": "folder:app",
+    "reason": "The main codebase routes, helpers, tests, and domain features reside under app."
+  },
+  {
+    "from": "folder:app",
+    "relation": "HAS_MODULE",
+    "to": "folder:authentication",
+    "reason": "Authentication module contains token verification and registry workflow endpoints."
+  },
+  {
+    "from": "folder:app",
+    "relation": "HAS_MODULE",
+    "to": "folder:helpers",
+    "reason": "Global helpers folder defines custom application errors."
+  },
+  {
+    "from": "folder:app",
+    "relation": "HAS_MODULE",
+    "to": "folder:routes",
+    "reason": "Routes folder groups all route registrations under one location."
+  },
+  {
+    "from": "folder:app",
+    "relation": "HAS_MODULE",
+    "to": "folder:todos",
+    "reason": "Todo module groups together schemas, validations, and controller operations."
+  },
+  {
+    "from": "folder:app",
+    "relation": "HAS_MODULE",
+    "to": "folder:users",
+    "reason": "User module groups together schemas, hashing hooks, and controllers for user management."
+  },
+  {
+    "from": "folder:config",
+    "relation": "HAS_MODULE",
+    "to": "config:config",
+    "reason": "Declares config module to handle env files loading."
+  },
+  {
+    "from": "folder:config",
+    "relation": "HAS_MODULE",
+    "to": "config:express",
+    "reason": "Declares express module to configure router and parser setups."
+  },
+  {
+    "from": "folder:config",
+    "relation": "HAS_MODULE",
+    "to": "config:logger",
+    "reason": "Declares logging module setting console output format rules."
+  },
+  {
+    "from": "folder:config",
+    "relation": "HAS_MODULE",
+    "to": "config:passport",
+    "reason": "Declares passport settings establishing JWT strategy."
+  },
+  {
+    "from": "folder:helpers",
+    "relation": "HAS_MODULE",
+    "to": "helper:app_error",
+    "reason": "Provides AppError class definition for error raising."
+  },
+  {
+    "from": "folder:routes",
+    "relation": "HAS_MODULE",
+    "to": "routes:index",
+    "reason": "Stores route configurations connecting endpoints to controllers."
+  },
+  {
+    "from": "folder:users",
+    "relation": "HAS_MODULE",
+    "to": "model:user",
+    "reason": "Stores user schema details, validator paths, and hooks."
+  },
+  {
+    "from": "folder:users",
+    "relation": "HAS_MODULE",
+    "to": "service:user_controller",
+    "reason": "Stores user operations including retrieval lists and profiles."
+  },
+  {
+    "from": "folder:todos",
+    "relation": "HAS_MODULE",
+    "to": "model:todo",
+    "reason": "Stores todo schema details and helper date functions."
+  },
+  {
+    "from": "folder:todos",
+    "relation": "HAS_MODULE",
+    "to": "service:todo_controller",
+    "reason": "Stores secure todo CRUD operations."
+  },
+  {
+    "from": "folder:authentication",
+    "relation": "HAS_MODULE",
+    "to": "service:auth_controller",
+    "reason": "Stores entry gate logic for registration and authorization checks."
+  },
+  {
+    "from": "config:express",
+    "relation": "USES",
+    "to": "routes:index",
+    "reason": "Registers routing paths directly on the Express app instance."
+  },
+  {
+    "from": "config:express",
+    "relation": "USES",
+    "to": "config:passport",
+    "reason": "Configures and initializes Passport token security context middleware."
+  },
+  {
+    "from": "config:express",
+    "relation": "USES",
+    "to": "helper:app_error",
+    "reason": "Constructs custom Error responses in general catch-all error handling middleware."
+  },
+  {
+    "from": "config:express",
+    "relation": "USES",
+    "to": "config:logger",
+    "reason": "Instantiates logger wrapper instances to output HTTP operations."
+  },
+  {
+    "from": "config:passport",
+    "relation": "USES",
+    "to": "model:user",
+    "reason": "Extracts JWT token information to fetch matching User instances from MongoDB."
+  },
+  {
+    "from": "config:passport",
+    "relation": "CONFIGURES",
+    "to": "routes:index",
+    "reason": "Secures selected routing endpoints with JWT authenticate guards."
+  },
+  {
+    "from": "routes:index",
+    "relation": "EXPOSES_ENDPOINT",
+    "to": "endpoint:post_login",
+    "reason": "Binds login API routes."
+  },
+  {
+    "from": "routes:index",
+    "relation": "EXPOSES_ENDPOINT",
+    "to": "endpoint:post_register",
+    "reason": "Binds registration API routes."
+  },
+  {
+    "from": "routes:index",
+    "relation": "EXPOSES_ENDPOINT",
+    "to": "endpoint:get_me",
+    "reason": "Binds validation token checker API routes."
+  },
+  {
+    "from": "routes:index",
+    "relation": "EXPOSES_ENDPOINT",
+    "to": "endpoint:get_users",
+    "reason": "Binds user collection list retrieval API routes."
+  },
+  {
+    "from": "routes:index",
+    "relation": "EXPOSES_ENDPOINT",
+    "to": "endpoint:get_user_by_id",
+    "reason": "Binds profile fetching API routes."
+  },
+  {
+    "from": "routes:index",
+    "relation": "EXPOSES_ENDPOINT",
+    "to": "endpoint:patch_user_by_id",
+    "reason": "Binds updates of user information API routes."
+  },
+  {
+    "from": "routes:index",
+    "relation": "EXPOSES_ENDPOINT",
+    "to": "endpoint:get_todos",
+    "reason": "Binds retrieval of secure todo collections API routes."
+  },
+  {
+    "from": "routes:index",
+    "relation": "EXPOSES_ENDPOINT",
+    "to": "endpoint:post_todos",
+    "reason": "Binds creation of todo instances API routes."
+  },
+  {
+    "from": "routes:index",
+    "relation": "EXPOSES_ENDPOINT",
+    "to": "endpoint:get_todo_by_id",
+    "reason": "Binds fetching of single todo matching ID API routes."
+  },
+  {
+    "from": "routes:index",
+    "relation": "EXPOSES_ENDPOINT",
+    "to": "endpoint:delete_todo_by_id",
+    "reason": "Binds deletion of single todo matching ID API routes."
+  },
+  {
+    "from": "routes:index",
+    "relation": "EXPOSES_ENDPOINT",
+    "to": "endpoint:patch_todo_by_id",
+    "reason": "Binds updates of todo attributes API routes."
+  },
+  {
+    "from": "endpoint:post_login",
+    "relation": "HANDLES_REQUEST",
+    "to": "function:auth_login",
+    "reason": "Routes requests to auth_controller.login function."
+  },
+  {
+    "from": "endpoint:post_register",
+    "relation": "HANDLES_REQUEST",
+    "to": "function:auth_register",
+    "reason": "Routes requests to auth_controller.register function."
+  },
+  {
+    "from": "endpoint:get_me",
+    "relation": "HANDLES_REQUEST",
+    "to": "function:auth_check_auth",
+    "reason": "Routes requests to auth_controller.checkAuth function."
+  },
+  {
+    "from": "endpoint:get_users",
+    "relation": "HANDLES_REQUEST",
+    "to": "function:user_list",
+    "reason": "Routes requests to user_controller.list function."
+  },
+  {
+    "from": "endpoint:get_user_by_id",
+    "relation": "HANDLES_REQUEST",
+    "to": "function:user_get_by_id",
+    "reason": "Routes requests to user_controller.getById function."
+  },
+  {
+    "from": "endpoint:patch_user_by_id",
+    "relation": "HANDLES_REQUEST",
+    "to": "function:user_update",
+    "reason": "Routes requests to user_controller.update function."
+  },
+  {
+    "from": "endpoint:get_todos",
+    "relation": "HANDLES_REQUEST",
+    "to": "function:todo_list",
+    "reason": "Routes requests to todo_controller.list function."
+  },
+  {
+    "from": "endpoint:post_todos",
+    "relation": "HANDLES_REQUEST",
+    "to": "function:todo_create",
+    "reason": "Routes requests to todo_controller.create function."
+  },
+  {
+    "from": "endpoint:get_todo_by_id",
+    "relation": "HANDLES_REQUEST",
+    "to": "function:todo_get_by_id",
+    "reason": "Routes requests to todo_controller.getById function."
+  },
+  {
+    "from": "endpoint:delete_todo_by_id",
+    "relation": "HANDLES_REQUEST",
+    "to": "function:todo_remove_by_id",
+    "reason": "Routes requests to todo_controller.removeById function."
+  },
+  {
+    "from": "endpoint:patch_todo_by_id",
+    "relation": "HANDLES_REQUEST",
+    "to": "function:todo_update",
+    "reason": "Routes requests to todo_controller.update function."
+  },
+  {
+    "from": "function:auth_login",
+    "relation": "CALLS",
+    "to": "model:user",
+    "reason": "Searches for matching emails using the Mongoose model's findOne API."
+  },
+  {
+    "from": "function:auth_login",
+    "relation": "CALLS",
+    "to": "method:user_generate_token",
+    "reason": "Issues a JWT access token upon successful password validation."
+  },
+  {
+    "from": "function:auth_login",
+    "relation": "USES",
+    "to": "helper:app_error",
+    "reason": "Raises unauthorized credentials exception errors."
+  },
+  {
+    "from": "function:auth_register",
+    "relation": "CALLS",
+    "to": "model:user",
+    "reason": "Persists new user schemas using the Mongoose model's create API."
+  },
+  {
+    "from": "function:auth_register",
+    "relation": "CALLS",
+    "to": "method:user_generate_token",
+    "reason": "Issues a JWT access token immediately on registration completion."
+  },
+  {
+    "from": "function:auth_check_auth",
+    "relation": "USES",
+    "to": "helper:app_error",
+    "reason": "Raises errors when authentication tokens are missing."
+  },
+  {
+    "from": "function:user_list",
+    "relation": "CALLS",
+    "to": "model:user",
+    "reason": "Fetches user details using User.find()."
+  },
+  {
+    "from": "function:user_get_by_id",
+    "relation": "CALLS",
+    "to": "model:user",
+    "reason": "Queries profile records using User.findById()."
+  },
+  {
+    "from": "function:user_update",
+    "relation": "CALLS",
+    "to": "model:user",
+    "reason": "Alters database user schemas using User.findByIdAndUpdate()."
+  },
+  {
+    "from": "function:todo_list",
+    "relation": "CALLS",
+    "to": "model:todo",
+    "reason": "Retrieves todo lists using Todo.find({ _creator: req.user._id })."
+  },
+  {
+    "from": "function:todo_create",
+    "relation": "CALLS",
+    "to": "model:todo",
+    "reason": "Inserts single todo records using Todo.create()."
+  },
+  {
+    "from": "function:todo_get_by_id",
+    "relation": "CALLS",
+    "to": "model:todo",
+    "reason": "Queries target todo details using Todo.findOne({ _id: id, _creator: req.user._id })."
+  },
+  {
+    "from": "function:todo_remove_by_id",
+    "relation": "CALLS",
+    "to": "model:todo",
+    "reason": "Removes record using Todo.findOneAndRemove({ _id: id, _creator: req.user._id })."
+  },
+  {
+    "from": "function:todo_update",
+    "relation": "CALLS",
+    "to": "model:todo",
+    "reason": "Updates status/timestamps using Todo.findOneAndUpdate({ _id: id, _creator: req.user._id })."
+  },
+  {
+    "from": "model:user",
+    "relation": "HAS_METHOD",
+    "to": "method:user_generate_token",
+    "reason": "Mongoose schema instance method to generate user tokens."
+  },
+  {
+    "from": "model:user",
+    "relation": "HAS_METHOD",
+    "to": "method:user_pre_save",
+    "reason": "Mongoose middleware validation callback executing password hashing."
+  },
+  {
+    "from": "model:user",
+    "relation": "USES_DATABASE",
+    "to": "db:mongodb",
+    "reason": "Persists and queries user structures within Mongo collections."
+  },
+  {
+    "from": "model:todo",
+    "relation": "USES_DATABASE",
+    "to": "db:mongodb",
+    "reason": "Persists and queries todo structures within Mongo collections."
+  },
+  {
+    "from": "model:todo",
+    "relation": "DEPENDS_ON",
+    "to": "model:user",
+    "reason": "Stores reference keys (_creator) mapping to specific User object documents."
+  }
+]

@@ -1,0 +1,310 @@
+[
+  {
+    "id": "project:root",
+    "type": "Project",
+    "name": "node-express-mongoose-todo-api",
+    "file": "package.json",
+    "description": "A RESTful Todo API server built with Node.js, Express, Mongoose, Passport, and JWT."
+  },
+  {
+    "id": "folder:config",
+    "type": "Folder",
+    "name": "config",
+    "file": "config/",
+    "description": "Folder containing system, logger, express, and authentication settings configurations."
+  },
+  {
+    "id": "folder:app",
+    "type": "Folder",
+    "name": "app",
+    "file": "app/",
+    "description": "Main folder hosting API modules, controllers, models, routing, helpers, and test files."
+  },
+  {
+    "id": "folder:authentication",
+    "type": "Folder",
+    "name": "app/authentication",
+    "file": "app/authentication/",
+    "description": "Folder hosting controller actions dealing with user register, login, and token validations."
+  },
+  {
+    "id": "folder:helpers",
+    "type": "Folder",
+    "name": "app/helpers",
+    "file": "app/helpers/",
+    "description": "Folder hosting general utility helpers like standard HTTP errors."
+  },
+  {
+    "id": "folder:routes",
+    "type": "Folder",
+    "name": "app/routes",
+    "file": "app/routes/",
+    "description": "Folder hosting the centralized Express routes registration logic."
+  },
+  {
+    "id": "folder:todos",
+    "type": "Folder",
+    "name": "app/todos",
+    "file": "app/todos/",
+    "description": "Folder hosting the Todo model, schemas, validations, and controller operations."
+  },
+  {
+    "id": "folder:users",
+    "type": "Folder",
+    "name": "app/users",
+    "file": "app/users/",
+    "description": "Folder hosting the User model, schemas, hashing middleware, validations, and user controllers."
+  },
+  {
+    "id": "config:config",
+    "type": "Configuration",
+    "name": "Config Loader",
+    "file": "config/config.js",
+    "description": "Loads environment variable options through dotenv and makes them available globally."
+  },
+  {
+    "id": "config:express",
+    "type": "Configuration",
+    "name": "Express Config",
+    "file": "config/express.js",
+    "description": "Bootstraps Express middlewares, body parser parsing, passport integration, routing, and error interceptors."
+  },
+  {
+    "id": "config:logger",
+    "type": "Configuration",
+    "name": "Winston Logger Config",
+    "file": "config/logger.js",
+    "description": "Configures colorized console logging wrapper detailing which module produced the output."
+  },
+  {
+    "id": "config:passport",
+    "type": "Configuration",
+    "name": "Passport Auth Config",
+    "file": "config/passport.js",
+    "description": "Sets up JWT passport validation middleware using user models to check incoming tokens."
+  },
+  {
+    "id": "helper:app_error",
+    "type": "Class",
+    "name": "AppError",
+    "file": "app/helpers/AppError.js",
+    "description": "Custom extension of the JavaScript built-in Error class containing an HTTP status property."
+  },
+  {
+    "id": "routes:index",
+    "type": "Module",
+    "name": "API Router",
+    "file": "app/routes/index.js",
+    "description": "Central router routing paths to Auth, User, and Todo controllers, backed by passport security guards."
+  },
+  {
+    "id": "model:user",
+    "type": "Model",
+    "name": "User",
+    "file": "app/users/user-model.js",
+    "description": "Mongoose schema representing user metadata, featuring validations, password hashing hooks, and token generators."
+  },
+  {
+    "id": "model:todo",
+    "type": "Model",
+    "name": "Todo",
+    "file": "app/todos/todo-model.js",
+    "description": "Mongoose schema mapping todo details (text, completed state, timestamps, creator association)."
+  },
+  {
+    "id": "service:auth_controller",
+    "type": "Service",
+    "name": "AuthController",
+    "file": "app/authentication/auth-controller.js",
+    "description": "Controller layer containing business workflows for logging in, registering, and validating active tokens."
+  },
+  {
+    "id": "service:user_controller",
+    "type": "Service",
+    "name": "UserController",
+    "file": "app/users/user-controller.js",
+    "description": "Controller layer containing workflows to retrieve a list of users, fetch single profiles, or update users."
+  },
+  {
+    "id": "service:todo_controller",
+    "type": "Service",
+    "name": "TodoController",
+    "file": "app/todos/todo-controller.js",
+    "description": "Controller layer handling secure CRUD logic for todo documents associated with an owner."
+  },
+  {
+    "id": "db:mongodb",
+    "type": "External API",
+    "name": "MongoDB Database",
+    "file": "index.js",
+    "description": "Underlying document-oriented database storage for users and todo documents."
+  },
+  {
+    "id": "endpoint:post_login",
+    "type": "API Endpoint",
+    "name": "POST /login",
+    "file": "app/routes/index.js",
+    "description": "Allows registered users to authenticate by email and password, returning user ID and JWT."
+  },
+  {
+    "id": "endpoint:post_register",
+    "type": "API Endpoint",
+    "name": "POST /register",
+    "file": "app/routes/index.js",
+    "description": "Registers a new user profile using username, email, and password, returning ID and JWT."
+  },
+  {
+    "id": "endpoint:get_me",
+    "type": "API Endpoint",
+    "name": "GET /me",
+    "file": "app/routes/index.js",
+    "description": "Verifies custom authorization header and returns user id corresponding to the token."
+  },
+  {
+    "id": "endpoint:get_users",
+    "type": "API Endpoint",
+    "name": "GET /users",
+    "file": "app/routes/index.js",
+    "description": "JWT-guarded endpoint retrieving lists of all registered users."
+  },
+  {
+    "id": "endpoint:get_user_by_id",
+    "type": "API Endpoint",
+    "name": "GET /users/:id",
+    "file": "app/routes/index.js",
+    "description": "JWT-guarded endpoint returning user profile metadata for a specific user ID."
+  },
+  {
+    "id": "endpoint:patch_user_by_id",
+    "type": "API Endpoint",
+    "name": "PATCH /users/:id",
+    "file": "app/routes/index.js",
+    "description": "JWT-guarded endpoint allowing modification of a user's details by ID."
+  },
+  {
+    "id": "endpoint:get_todos",
+    "type": "API Endpoint",
+    "name": "GET /todos",
+    "file": "app/routes/index.js",
+    "description": "JWT-guarded endpoint returning todo documents created by the authenticated user."
+  },
+  {
+    "id": "endpoint:post_todos",
+    "type": "API Endpoint",
+    "name": "POST /todos",
+    "file": "app/routes/index.js",
+    "description": "JWT-guarded endpoint to create a new todo document associated with the logged-in user."
+  },
+  {
+    "id": "endpoint:get_todo_by_id",
+    "type": "API Endpoint",
+    "name": "GET /todos/:id",
+    "file": "app/routes/index.js",
+    "description": "JWT-guarded endpoint returning a specific todo detail matching the ID and creator's ID."
+  },
+  {
+    "id": "endpoint:delete_todo_by_id",
+    "type": "API Endpoint",
+    "name": "DELETE /todos/:id",
+    "file": "app/routes/index.js",
+    "description": "JWT-guarded endpoint removing a specific todo document matching the ID and creator's ID."
+  },
+  {
+    "id": "endpoint:patch_todo_by_id",
+    "type": "API Endpoint",
+    "name": "PATCH /todos/:id",
+    "file": "app/routes/index.js",
+    "description": "JWT-guarded endpoint toggling completion status and updating completion timestamps."
+  },
+  {
+    "id": "method:user_generate_token",
+    "type": "Method",
+    "name": "User.prototype.generateToken",
+    "file": "app/users/user-model.js",
+    "description": "Generates a JWT signed payload that encapsulates the current user document."
+  },
+  {
+    "id": "method:user_pre_save",
+    "type": "Method",
+    "name": "User.pre('save')",
+    "file": "app/users/user-model.js",
+    "description": "Schema pre-save hook that hashes passwords using bcrypt before DB insertion."
+  },
+  {
+    "id": "function:auth_login",
+    "type": "Function",
+    "name": "exports.login",
+    "file": "app/authentication/auth-controller.js",
+    "description": "Validates email presence, verifies hashed passwords via bcrypt, and returns generated JWT tokens."
+  },
+  {
+    "id": "function:auth_register",
+    "type": "Function",
+    "name": "exports.register",
+    "file": "app/authentication/auth-controller.js",
+    "description": "Persists new user schemas and yields registration tokens on success."
+  },
+  {
+    "id": "function:auth_check_auth",
+    "type": "Function",
+    "name": "exports.checkAuth",
+    "file": "app/authentication/auth-controller.js",
+    "description": "Validates header tokens directly against configurations without Passport."
+  },
+  {
+    "id": "function:todo_list",
+    "type": "Function",
+    "name": "exports.list",
+    "file": "app/todos/todo-controller.js",
+    "description": "Queries Todo collections filter-scoped by the current request user identity."
+  },
+  {
+    "id": "function:todo_create",
+    "type": "Function",
+    "name": "exports.create",
+    "file": "app/todos/todo-controller.js",
+    "description": "Creates a new Todo record linking the current request user ID as the owner."
+  },
+  {
+    "id": "function:todo_get_by_id",
+    "type": "Function",
+    "name": "exports.getById",
+    "file": "app/todos/todo-controller.js",
+    "description": "Queries a single Todo document matching both document ID and creator ID."
+  },
+  {
+    "id": "function:todo_remove_by_id",
+    "type": "Function",
+    "name": "exports.removeById",
+    "file": "app/todos/todo-controller.js",
+    "description": "Finds and deletes a Todo document matching both document ID and creator ID."
+  },
+  {
+    "id": "function:todo_update",
+    "type": "Function",
+    "name": "exports.update",
+    "file": "app/todos/todo-controller.js",
+    "description": "Finds and updates todo status, registering completed = true and updating completedAt timestamps."
+  },
+  {
+    "id": "function:user_list",
+    "type": "Function",
+    "name": "exports.list",
+    "file": "app/users/user-controller.js",
+    "description": "Queries and returns lists of all user documents from User collections."
+  },
+  {
+    "id": "function:user_get_by_id",
+    "type": "Function",
+    "name": "exports.getById",
+    "file": "app/users/user-controller.js",
+    "description": "Retrieves a user document by ID, checking format validity before query."
+  },
+  {
+    "id": "function:user_update",
+    "type": "Function",
+    "name": "exports.update",
+    "file": "app/users/user-controller.js",
+    "description": "Updates profile document matching parameters ID and returns updated document details."
+  }
+]
