@@ -8,6 +8,9 @@ const Node = require("./Node");
 const Edge = require("./Edge");
 
 function loadGraph(graphFolderPath) {
+    if (!graphFolderPath) {
+        graphFolderPath = path.join(__dirname, "..", "..", "repositories", "to-do");
+    }
 
     const graph = new Graph();
 
