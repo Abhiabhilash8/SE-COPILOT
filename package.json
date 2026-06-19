@@ -12,6 +12,12 @@
   "type": "commonjs",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",
-    "express": "^5.2.1"
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "groq-sdk": "^1.2.1",
+    "neo4j-driver": "^6.1.0",
+    "simple-git": "^3.36.0",
+    "tree-sitter-javascript": "^0.25.0",
+    "web-tree-sitter": "^0.26.9"
   }
 }
